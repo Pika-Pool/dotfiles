@@ -1,7 +1,5 @@
-> install script doesn't work yet
-
 ## Installation
-- Clone this repository
+- Clone this repository(make sure its in ~/.dotfiles/ if using ./install)
 ```shell
 git clone --recurse-submodules --shallow-submodules -j8 --depth=1 https://github.com/Pika-Pool/dotfiles.git ~/.dotfiles
 ```
