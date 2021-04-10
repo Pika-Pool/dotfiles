@@ -5,7 +5,8 @@
 ```shell
 git clone --recurse-submodules -j8 https://github.com/Pika-Pool/dotfiles.git
 ```
-<small>Note: `-j8` is an optional performance optimization that became available in version 2.8, and fetches up to 8 submodules at a time in parallel — see man `git-clone`.</small>
+<sup>Note: `-j8` is an optional performance optimization that became available in version 2.8, and fetches up to 8 submodules at a time in parallel — see man `git-clone`.</sup>
+
 - Create symbolic links according to the following:
 
 | Source    	| Target       	| Note                            	|
