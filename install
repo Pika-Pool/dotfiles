@@ -1,0 +1,16 @@
+#!/bin/bash
+
+declare -A arr
+arr+=(
+	["bashrc"]="~/.bashrc"
+	["vim"]="~/.vim"
+	["profile"]="~/.profile"
+)
+
+printf "%s\t%s\n" "in repo" "in system"
+
+echo "This will clean out the existing dotfiles in your system and add symlinks to those in this repository"
+echo "To skip files, don't delete them in the next steps"
+for key in ${!arr[@]}; do
+	ln -i 
+done

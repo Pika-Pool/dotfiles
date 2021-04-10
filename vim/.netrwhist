@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/home/pikapool/.dotfiles/vim/pack/color_schemes/opt/onedark.vim'
+let g:netrw_dirhist_3='/home/pikapool/.vim'
+let g:netrw_dirhist_2='/home/pikapool/.vim/pack/color_schemes/opt/onedark.vim'
+let g:netrw_dirhist_1='/etc/sudoers.d'
