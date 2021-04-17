@@ -13,6 +13,8 @@ git clone --recurse-submodules --shallow-submodules -j8 --depth=1 https://github
 | vim       	| ~/.vim       	|                                 	|
 | profile   	| ~/.profile   	|                                 	|
 | gitconfig 	| ~/.gitconfig 	| Change user.email and user.name 	|
+| zshrc		| ~/.zshrc	|					|
+| oh-my-zsh	| ~/.oh-my-zsh	|					|
 - while creating symlinks using `ln -s`, use the full absolute path
 	``` shell
 	ln -s ~/.dotfiles/.bashrc ~/.bashrc
