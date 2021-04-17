@@ -4,6 +4,8 @@ ln -ivfs -T ~/.dotfiles/bashrc ~/.bashrc;
 ln -ivfs -T ~/.dotfiles/vim ~/.vim;
 ln -ivfs -T ~/.dotfiles/gitconfig ~/.gitconfig;
 ln -ivfs -T ~/.dotfiles/profile ~/.profile;
+ln -ivfs -T ~/.dotfiles/oh-my-zsh ~/.oh-my-zsh;
+ln -ivfs -T ~/.dotfiles/zshrc ~/.zshrc;
 
 ## NOT WORKING ##
 # loading files
