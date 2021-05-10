@@ -10,3 +10,6 @@
 [submodule "vim/pack/color_schemes/opt/onedark.vim"]
 	path = vim/pack/color_schemes/opt/onedark.vim
 	url = https://github.com/Pika-Pool/onedark.vim.git
+[submodule "vim/pack/plugins/start/nerdtree"]
+	path = vim/pack/plugins/start/nerdtree
+	url = https://github.com/preservim/nerdtree.git
