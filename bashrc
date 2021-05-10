@@ -126,3 +126,4 @@ export PATH="$PATH:/usr/local/bin"
 
 # default directory
 cd /mnt/d/DEV/
+source "$HOME/.cargo/env"

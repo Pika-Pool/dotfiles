@@ -44,3 +44,7 @@ then
 else
     echo "'/opt/premake5' not found  -  error in $HOME/.profile"
 fi
+
+export EDITOR=/usr/bin/vim
+export VISUAL=/usr/bin/vim
+source "$HOME/.cargo/env"

@@ -1,5 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =4
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/mnt/d/DEV'
+let g:netrw_dirhist_6='/mnt/d'
+let g:netrw_dirhist_5='/mnt/d/DEV'
 let g:netrw_dirhist_4='/home/pikapool/.dotfiles/vim/pack/color_schemes/opt/onedark.vim'
 let g:netrw_dirhist_3='/home/pikapool/.vim'
 let g:netrw_dirhist_2='/home/pikapool/.vim/pack/color_schemes/opt/onedark.vim'
