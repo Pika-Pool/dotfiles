@@ -1,0 +1,7 @@
+store-dir=d:/.pnpm-store
+pnpm-prefix=d:/.pnpm-global-store
+init-license=MIT
+init-version=0.0.1
+init-author-name=PikaPool
+init-author-email=https://www.github.com/Pika-Pool
+color=true
