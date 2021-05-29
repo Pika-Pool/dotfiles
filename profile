@@ -30,11 +30,8 @@ fi
 if [ -d "/usr/local/go/bin" ] ;
 then
     PATH="$PATH:/usr/local/go/bin";
-    export GOPATH="$HOME/go";
-    PATH="$PATH:$GOPATH/bin";
-    export GOROOT="/usr/local/go"
-else
-    echo "'/usr/local/go/bin not found'  -  error in $HOME/.profile"
+#else
+#    echo "'/usr/local/go/bin not found'  -  error in $HOME/.profile"
 fi
 
 # set PATH so it includes premake5
