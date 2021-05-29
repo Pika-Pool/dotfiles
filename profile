@@ -41,8 +41,8 @@ fi
 if [ -f "/opt/premake5" ] ;
 then
     PATH="$PATH:/opt/";
-else
-    echo "'/opt/premake5' not found  -  error in $HOME/.profile"
+#else
+#    echo "'/opt/premake5' not found  -  error in $HOME/.profile"
 fi
 
 export EDITOR=/usr/bin/vim
