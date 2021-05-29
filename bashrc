@@ -119,11 +119,5 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# my own scripts
-export PATH="$HOME/bin:$PATH"
-# scripts for all users in system
-export PATH="$PATH:/usr/local/bin"
-
 # default directory
 cd /mnt/d/DEV/
-source "$HOME/.cargo/env"

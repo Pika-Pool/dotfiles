@@ -47,4 +47,8 @@ fi
 
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
-source "$HOME/.cargo/env"
+
+if [ -f "$HOME/.cargo/" ] ;
+then
+    source "$HOME/.cargo/env"
+fi
