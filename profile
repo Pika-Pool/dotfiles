@@ -49,3 +49,16 @@ if [ -f "$HOME/.cargo/" ] ;
 then
     source "$HOME/.cargo/env"
 fi
+
+# golang
+if [ -d "/mnt/d/DEV/golang-projects" ] ; then
+    export GOPATH="/mnt/d/DEV/golang-projects"
+fi
+if [ -d "$HOME/go" ] ; then
+    export GOPATH="$HOME/go;$GOPATH"
+fi
+
+# python - pip installs modules here
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$PATH:$HOME/.local/bin"
+fi
