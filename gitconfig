@@ -2,6 +2,6 @@
 	email = pikapool@PikaTuf.ubu
 	name = pikapool@PikaTuf WSL Ubuntu
 [credential]
-	helper = /mnt/d/Program\\ Files/Git/mingw64/libexec/git-core/git-credential-manager.exe
+	helper = /mnt/d/Program_Files/Git/mingw64/libexec/git-core/git-credential-manager.exe
 [init]
 	defaultBranch = main
