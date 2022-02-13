@@ -1,0 +1,7 @@
+[init]
+	defaultBranch = main
+[credential]
+	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
+[user]
+	email = 33688622+Pika-Pool@users.noreply.github.com
+	name = Pika-Pool
