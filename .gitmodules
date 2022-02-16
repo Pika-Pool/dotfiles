@@ -7,3 +7,9 @@
 [submodule "vim/pack/color_schemes/opt/onedark.vim"]
 	path = vim/pack/color_schemes/opt/onedark.vim
 	url = https://github.com/Pika-Pool/onedark.vim.git
+[submodule "ohmyzsh"]
+	path = zsh/ohmyzsh
+	url = https://github.com/ohmyzsh/ohmyzsh.git
+[submodule "powerlevel10k"]
+	path = zsh/themes/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k.git
