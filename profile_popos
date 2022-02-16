@@ -31,14 +31,6 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-# set PATH so it includes go-lang executables
-if [ -d "/usr/local/go/bin" ] ;
-then
-    PATH="$PATH:/usr/local/go/bin";
-#else
-#    echo "'/usr/local/go/bin not found'  -  error in $HOME/.profile"
-fi
-
 # set PATH so it includes premake5
 if [ -f "/opt/premake5" ] ;
 then
@@ -56,18 +48,13 @@ if [ -f "$HOME/.cargo/" ] ; then
 fi
 
 # golang
-if [ -d "/mnt/d/DEV/golang-projects" ] ; then
-    export GOPATH="/mnt/d/DEV/golang-projects"
-fi
-if [ -d "$HOME/go" ] ; then
-    export GOPATH="$HOME/go;$GOPATH"
-fi
-if [ -d "/usr/local/go/bin" ]; then
-    export PATH="$PATH:/usr/local/go/bin"
-fi
+export PATH="$PATH:/usr/local/go/bin"
 
 # nvm for linux
 export NVM_DIR="$config_home/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# zsh
+# oh-my-zsh ohmyzsh submodule dir
+export ZSH="$HOME/.dotfiles/zsh/oh-my-zsh"
