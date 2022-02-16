@@ -18,7 +18,7 @@ fi
 alias ll='ls -AlF'
 alias la='ls -A'
 alias l='ls -CF'
-alias lf='ls -ld'
+alias ld='ls -ld'
 alias bat='batcat'
 
 # Add an "alert" alias for long running commands.  Use like so:

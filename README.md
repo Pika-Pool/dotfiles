@@ -13,12 +13,19 @@ git submodule update --init --recursive --remote
 
 - Create symbolic links according to the following:
 
-| Source    	| Target       	| Note                            	|
-|-----------	|--------------	|---------------------------------	|
-| bashrc    	| ~/.bashrc    	|                                 	|
-| vim       	| ~/.vim       	|                                 	|
-| profile   	| ~/.profile   	|                                 	|
-| gitconfig 	| ~/.gitconfig 	| Change user.email and user.name 	|
+| Source    		| Target       									| Note                            |
+|---------------|-------------------------------|---------------------------------|
+| bashrc    		| ~/.bashrc    									|                                 |
+| bash_aliases	| ~/.bash_aliases								| 																|
+| vim       		| ~/.vim       									|                                 |
+| profile   		| ~/.profile   									|                                 |
+| gitconfig 		| ~/.gitconfig 									| Change user.email and user.name	|
+| npmrc 				| ~/.npmrc 											| 																|
+| zsh/zshrc 		| ~/.zshrc 											|																	|
+| zsh/plugins 	| zsh/oh-my-zsh/custom/plugins	| 																|
+| zsh/themes	 	| zsh/oh-my-zsh/custom/themes		| 																|
+| zsh/.p10k.zsh | ~/.p10k.zsh 									| powerlevel10k script						|
+
 - while creating symlinks using `ln -s`, use the full absolute path
 	``` shell
 	ln -s ~/.dotfiles/.bashrc ~/.bashrc
