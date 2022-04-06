@@ -1,0 +1,38 @@
+command_timeout = 1000 # milliseconds
+
+format = """($username@$hostname: )$directory(\n$all)$character"""
+
+[character]
+success_symbol = "[➜](bold green)"
+error_symbol = "[✗](bold red)"
+
+[directory]
+truncation_length = 0
+truncate_to_repo = true
+truncation_symbol = ".../"
+
+[ruby]
+symbol = " "
+
+[memory_usage]
+disabled = false
+threshold = 75
+format = "via $symbol [${ram_pct}( | ${swap_pct})]($style) "
+
+[git_branch]
+format = "$symbol[$branch]($style) "
+
+[git_status]
+ahead = "⇡${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+behind = "⇣${count}"
+
+[custom.typescript]
+style = "bold #5f87d7"
+format = "via [$symbol(v$output )]($style)"
+command = """dum tsc -v | egrep -o "([0-9]{1,}\\.)+[0-9]{1,}""""
+files = ["tsconfig.json"]
+directories = ["node_modules"]
+when = """command -v dum && test -f ./node_modules/.bin/tsc"""
+symbol = " "
+description = "typescript version in current directory"
