@@ -1,7 +1,6 @@
 
 # If you come from bash you might have to change your $PATH.
 export PATH="$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH"
-export PATH="$PATH:/opt/android_sdk/emulator:/opt/android_sdk/platform-tools"
 
 # cargo rust
 . "$HOME/.cargo/env"
@@ -75,6 +74,10 @@ export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm
 
+# android
+export ANDROID_SDK_ROOT="/opt/android_sdk"
+export PATH="$PATH:$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/platform-tools"
+
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
@@ -103,6 +106,10 @@ else
 fi
 export VISUAL="$EDITOR"
 
+# nnn config - uses environment varables
+#BLK="04" CHR="04" DIR="04" EXE="00" REG="00" HARDLINK="00" SYMLINK="06" MISSING="00" ORPHAN="01" FIFO="0F" SOCK="0F" OTHER="02"
+#export NNN_FCOLORS="0404040000000600010F0F02"
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -114,12 +121,14 @@ export VISUAL="$EDITOR"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ls='ls --color=auto -F'
+alias ls='ls --color=auto -F --group-directories-first'
 alias ll='ls -Al'
 alias la='ls -A'
 alias l='ls -C'
 alias ld='ls -ld'
 alias py='python'
+alias nnn='nnn -d'
+alias n='nnn'
 
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
 

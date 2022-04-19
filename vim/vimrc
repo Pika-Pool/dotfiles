@@ -40,6 +40,7 @@ set wildmenu										" Great command-line completion, use `<Tab>` to move aroun
 set scrolloff=10								" 'virtual' lines after EOF 
 set nocompatible
 set showtabline=2								" see tab bar even if single file is open
+set showcmd											" show what command is being typed
 
 hi clear CursorLine
 hi CursorLine cterm=bold
@@ -124,3 +125,8 @@ function s:build_go_files()
 		call go#cmd#Build(0)
 	endif
 endfunction
+
+"""""""""""""""""""""
+" COC plugin config "
+"""""""""""""""""""""
+source "./coc.nvm.vimrc"

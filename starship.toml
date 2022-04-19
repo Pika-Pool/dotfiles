@@ -1,3 +1,4 @@
+# global settings
 command_timeout = 1000 # milliseconds
 
 format = """($username@$hostname: )$directory(\n$all)$character"""
@@ -28,11 +29,12 @@ diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 behind = "⇣${count}"
 
 [custom.typescript]
+disabled = true
 style = "bold #5f87d7"
 format = "via [$symbol(v$output )]($style)"
-command = """dum tsc -v | egrep -o "([0-9]{1,}\\.)+[0-9]{1,}""""
+command = """ dum tsc -v | egrep -o "([0-9]{1,}\\.)+[0-9]{1,}" """
 files = ["tsconfig.json"]
 directories = ["node_modules"]
-when = """command -v dum && test -f ./node_modules/.bin/tsc"""
+when = """ command -v dum && test -f ./node_modules/.bin/tsc """
 symbol = " "
 description = "typescript version in current directory"
