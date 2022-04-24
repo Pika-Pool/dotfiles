@@ -1,6 +1,8 @@
 #!/bin/bash
 
 dotfiles_path="$HOME/.dotfiles"
+this_script_directory=$(dirname "$0")                       # relative
+this_script_directory=$(cd "$this_script_directory" && pwd) # absolutized and normalized
 
 confirm() {
 	question=${1:-"Are you sure?[Y/n]"}
@@ -87,8 +89,29 @@ ubuntu() {
 	}
 
 	latest_git() {
-		sudo add-apt-repository ppa:git-core/ppa
-		packages_to_install+=(git)
+		# sudo add-apt-repository ppa:git-core/ppa
+		# packages_to_install+=(git gitk)
+
+		# setup credentials
+		# https://stackoverflow.com/questions/36585496/error-when-using-git-credential-helper-with-gnome-keyring-as-sudo/40312117#40312117
+		echo "download latest assets of git-credential-manager"
+
+		local git_credential_manager_tmp_file=/tmp/git_credential_manager_latest_assets.json
+		curl -Lo "$git_credential_manager_tmp_file" \
+			"https://api.github.com/repos/GitCredentialManager/git-credential-manager/releases/latest"
+
+		local asset_download_link="$(node "$this_script_directory/git_credential_manager_install.js" "$git_credential_manager_tmp_file")"
+		rm "$git_credential_manager_tmp_file"
+
+		# install git-credential-manager .deb file
+		local TEMP_DEB="/tmp/git_credentials_manager.deb" &&
+			touch "$TEMP_DEB" &&
+			echo -e "\ndownloading .deb file at $TEMP_DEB" &&
+			curl -Lo "$TEMP_DEB" "$asset_download_link" &&
+			echo -e "\ninstalling deb file from $TEMP_DEB" &&
+			sudo dpkg -i "$TEMP_DEB" &&
+			git-credential-manager-core configure &&
+			rm "$TEMP_DEB"
 	}
 
 	latest_vim() {
@@ -137,13 +160,13 @@ ubuntu() {
 
 	throttle_battery_charge() {
 		#write out current crontab
-		sudo crontab -l >/tmp/mycron
+		sudo crontab -l >>/tmp/mycron
 
 		#echo new cron into cron file
-		echo "@reboot echo 60 | tee /sys/class/power_supply/BAT0/charge_control_end_threshold" | sudo tee -a mycron
+		echo "@reboot echo 60 | tee /sys/class/power_supply/BAT0/charge_control_end_threshold" | tee -a /tmp/mycron
 
 		#install new cron file
-		crontab mycron
+		sudo crontab /tmp/mycron
 
 		# cleanup
 		rm /tmp/mycron
@@ -207,7 +230,7 @@ ubuntu() {
 		echo
 	fi
 
-	# echo # new line
+	echo # new line
 	# install_packages
 }
 
