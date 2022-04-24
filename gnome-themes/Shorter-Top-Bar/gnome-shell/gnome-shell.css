@@ -1,8 +1,8 @@
- /*
-  * Revert the panel height change introduced in GNOME 40. Change height back to
-  * 1.86em from 2.2em.
-  */
- 
- #panel {
-   height: 1.86em;
- }
+/*
+* Revert the panel height change introduced in GNOME 40. Change height back to
+* 1.86em from 2.2em.
+*/
+
+#panel {
+	height: 1.86em;
+}

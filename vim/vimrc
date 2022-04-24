@@ -129,4 +129,3 @@ endfunction
 """""""""""""""""""""
 " COC plugin config "
 """""""""""""""""""""
-source "./coc.nvm.vimrc"
