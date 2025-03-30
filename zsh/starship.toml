@@ -1,7 +1,9 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
 # global settings
 command_timeout = 1000 # milliseconds
 
-format = """($username@$hostname: )$directory(\n$all)$character"""
+format = """$custom($username@$hostname: )$directory(\n$all)$character"""
 
 [character]
 success_symbol = "[➜](bold green)"
@@ -11,12 +13,13 @@ error_symbol = "[✗](bold red)"
 truncation_length = 0
 truncate_to_repo = true
 truncation_symbol = ".../"
+use_os_path_sep = false
 
 [ruby]
 symbol = " "
 
 [memory_usage]
-disabled = false
+disabled = true
 threshold = 75
 format = "via $symbol [${ram_pct}( | ${swap_pct})]($style) "
 
@@ -27,14 +30,19 @@ format = "$symbol[$branch]($style) "
 ahead = "⇡${count}"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 behind = "⇣${count}"
+# windows_starship="/mnt/c/Users/sriram1001/portable_apps/starship/bin/starship.exe"
+# [custom.typescript]
+# disabled = true
+# style = "bold #5f87d7"
+# format = "via [$symbol(v$output )]($style)"
+# command = """ dum tsc -v | egrep -o "([0-9]{1,}\\.)+[0-9]{1,}" """
+# files = ["tsconfig.json"]
+# directories = ["node_modules"]
+# when = """ command -v dum && test -f ./node_modules/.bin/tsc """
+# symbol = " "
+# description = "typescript version in current directory"
 
-[custom.typescript]
-disabled = true
-style = "bold #5f87d7"
-format = "via [$symbol(v$output )]($style)"
-command = """ dum tsc -v | egrep -o "([0-9]{1,}\\.)+[0-9]{1,}" """
-files = ["tsconfig.json"]
-directories = ["node_modules"]
-when = """ command -v dum && test -f ./node_modules/.bin/tsc """
-symbol = " "
-description = "typescript version in current directory"
+[custom.isWSL]
+format="[❚](bold fg:white)[WSL]($style)[❚](bold fg:white) "
+style="bold fg:#de460c"
+when=''' ! [ -z $WSL_DISTRO_NAME ] '''

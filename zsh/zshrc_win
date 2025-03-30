@@ -1,11 +1,25 @@
 # If you come from bash you might have to change your $PATH.
-export PATH="$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH"
+# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.dotfiles/zsh/ohmyzsh"
+function isWSL() { 
+  if [ -z $WSL_DISTRO_NAME ]; then return 1; fi
+  return 0
+}
+
+isWSL && echo "wsl'$WSL_DISTRO_NAME'" "$(uname -a)"
+
+# Path to your Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+fpath=(~/.zsh $fpath)
+
+# Lines configured by zsh-newuser-install
+setopt notify
+unsetopt beep
+# End of lines configured by zsh-newuser-install
 
 # Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
+# load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
@@ -26,7 +40,7 @@ CASE_SENSITIVE="true"
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
 # zstyle ':omz:update' mode auto      # update automatically without asking
-zstyle ':omz:update' mode reminder # just remind me to update when it's time
+zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
 # zstyle ':omz:update' frequency 13
@@ -73,18 +87,21 @@ HIST_STAMPS="dd.mm.yyyy"
 plugins=(
   git
   gitfast
-  # docker
-  # docker-compose
-  # kubectl
-  # kind
-  # deno
+  gh
+  docker
+  docker-compose
+  kubectl
+  kind
+  deno
   asdf
   npm
-  nvm
 )
 
+isWSL && plugins+=(rails)
+
+# disable file permission checks for completions in WSL
+ZSH_DISABLE_COMPFIX=true
 source $ZSH/oh-my-zsh.sh
-unset LESS
 
 # User configuration
 
@@ -94,20 +111,21 @@ unset LESS
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-if [ "$TERM_PROGRAM" = 'vscode' ]; then
-  export EDITOR='code'
-  export GIT_EDITOR='code --wait'
-else
-  export EDITOR='vim'
-fi
-export VISUAL="$EDITOR"
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='nvim'
+# fi
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+# export ARCHFLAGS="-arch $(uname -m)"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# Set personal aliases, overriding those provided by Oh My Zsh libs,
+# plugins, and themes. Aliases can be placed here, though Oh My Zsh
+# users are encouraged to define aliases within a top-level file in
+# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
+# - $ZSH_CUSTOM/aliases.zsh
+# - $ZSH_CUSTOM/macos.zsh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
@@ -118,7 +136,17 @@ alias ll='ls -Al'
 alias la='ls -A'
 alias l='ls -C'
 alias ld='ls -ld'
-alias py='python'
+alias bat='bat.exe'
+
+# go executable is added to path in .zshenv in WSL, since its path is WSL specific
+local gopath="$(go env GOPATH)"
+if ! isWSL; then
+  gopath="$(cygpath -u "$gopath")" # convert windows path to git bash style path
+fi
+
+if [ -x "$(command -v go)" ] && [ -d "$gopath/bin" ]; then
+    export PATH="$gopath/bin:$PATH"
+fi
 
 # keep all PATH changes above this
 # remove duplicates, while keeping the order same
@@ -135,7 +163,12 @@ export PATH="$(echo "$PATH" | awk -F: '
 }
 END { print out }
 ')"
+# no PATH changes now
 
 # starship prompt for shell
-export STARSHIP_CONFIG="$HOME/.dotfiles/starship.toml"
+export STARSHIP_CONFIG="$HOME/starship.toml"
 eval "$(starship init zsh)"
+
+# unset BASH_VERSION
+export SHELL="$(where zsh | head -n 1)"
+export ZSH_EXECUTABLE="$SHELL"

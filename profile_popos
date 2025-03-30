@@ -31,14 +31,6 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-# set PATH so it includes premake5
-if [ -f "/opt/premake5" ] ;
-then
-    PATH="$PATH:/opt/";
-#else
-#    echo "'/opt/premake5' not found  -  error in $HOME/.profile"
-fi
-
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
 
@@ -48,13 +40,10 @@ if [ -f "$HOME/.cargo/" ] ; then
 fi
 
 # golang
-export PATH="$PATH:/usr/local/go/bin"
-
-# nvm for linux
-export NVM_DIR="$config_home/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+if [ -f "/usr/local/go/bin" ] ; then
+    export PATH="$PATH:/usr/local/go/bin"
+fi
 
 # zsh
 # oh-my-zsh ohmyzsh submodule dir
-export ZSH="$HOME/.dotfiles/zsh/oh-my-zsh"
+export ZSH="$HOME/.dotfiles/zsh/ohmyzsh"
